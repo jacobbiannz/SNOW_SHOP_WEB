@@ -13,11 +13,14 @@ export class SidebarComponent implements OnInit {
     //title = 'Tour of Heroes';
     categories: Category[];
     selectedCategory: Category;
-
+    errorMessage: string;
     constructor(private categoryService: CategoryService) { }
 
     getCatogories(): void {
-        this.categoryService.getCategories().then(categories => this.categories = categories);
+    //    this.categoryService.getCategories().then.(categories => this.categories = categories);
+        this.categoryService.getCategories().subscribe(
+            Categories => this.categories = Categories,
+            error => this.errorMessage = <any>error);;
     }
     ngOnInit(): void {
         this.getCatogories();

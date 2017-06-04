@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f006520ebe7a592ddc56"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ca3ffcf9bfc722d9ed82"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -704,7 +704,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(44)(__webpack_require__.s = 44);
+/******/ 	return hotCreateRequire(41)(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -922,10 +922,10 @@ module.exports = Html5Entities;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(30);
-__webpack_require__(41);
+__webpack_require__(27);
+__webpack_require__(38);
 var core_1 = __webpack_require__(1);
-var platform_browser_dynamic_1 = __webpack_require__(39);
+var platform_browser_dynamic_1 = __webpack_require__(36);
 var app_module_client_1 = __webpack_require__(8);
 if (true) {
     module['hot'].accept();
@@ -962,7 +962,7 @@ var options = {
   name: ''
 };
 if (true) {
-  var querystring = __webpack_require__(29);
+  var querystring = __webpack_require__(26);
   var overrides = querystring.parse(__resourceQuery.slice(1));
   if (overrides.path) options.path = overrides.path;
   if (overrides.timeout) options.timeout = overrides.timeout;
@@ -1082,11 +1082,11 @@ if (typeof window !== 'undefined') {
 }
 
 function createReporter() {
-  var strip = __webpack_require__(31);
+  var strip = __webpack_require__(28);
 
   var overlay;
   if (typeof document !== 'undefined' && options.overlay) {
-    overlay = __webpack_require__(33);
+    overlay = __webpack_require__(30);
   }
 
   var styles = {
@@ -1139,7 +1139,7 @@ function createReporter() {
   };
 }
 
-var processUpdate = __webpack_require__(34);
+var processUpdate = __webpack_require__(31);
 
 var customHandler;
 var subscribeAllHandler;
@@ -1204,7 +1204,7 @@ if (module) {
   };
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(35)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(32)(module)))
 
 /***/ }),
 /* 5 */
@@ -1420,9 +1420,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var platform_browser_1 = __webpack_require__(42);
-var forms_1 = __webpack_require__(37);
-var http_1 = __webpack_require__(38);
+var platform_browser_1 = __webpack_require__(39);
+var forms_1 = __webpack_require__(34);
+var http_1 = __webpack_require__(35);
 var app_module_shared_1 = __webpack_require__(9);
 var AppModule = (function () {
     function AppModule() {
@@ -1453,7 +1453,7 @@ exports.AppModule = AppModule;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var router_1 = __webpack_require__(40);
+var router_1 = __webpack_require__(37);
 var app_component_1 = __webpack_require__(10);
 var home_component_1 = __webpack_require__(11);
 var header_component_1 = __webpack_require__(12);
@@ -1498,8 +1498,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'app',
-        template: __webpack_require__(23),
-        styles: [__webpack_require__(32)]
+        template: __webpack_require__(21),
+        styles: [__webpack_require__(29)]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
@@ -1522,7 +1522,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var product_service_1 = __webpack_require__(17);
+var product_service_1 = __webpack_require__(15);
 var HomeComponent = (function () {
     function HomeComponent(productService) {
         this.productService = productService;
@@ -1542,7 +1542,7 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(24),
+        template: __webpack_require__(22),
         providers: [product_service_1.ProductService]
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService])
@@ -1576,7 +1576,7 @@ var HeaderComponent = (function () {
 HeaderComponent = __decorate([
     core_1.Component({
         selector: 'shared-header',
-        template: __webpack_require__(25)
+        template: __webpack_require__(23)
     }),
     __metadata("design:paramtypes", [])
 ], HeaderComponent);
@@ -1600,14 +1600,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var category_service_1 = __webpack_require__(16);
+var category_service_1 = __webpack_require__(43);
 var SidebarComponent = (function () {
     function SidebarComponent(categoryService) {
         this.categoryService = categoryService;
     }
     SidebarComponent.prototype.getCatogories = function () {
         var _this = this;
-        this.categoryService.getCategories().then(function (categories) { return _this.categories = categories; });
+        //    this.categoryService.getCategories().then.(categories => this.categories = categories);
+        this.categoryService.getCategories().subscribe(function (Categories) { return _this.categories = Categories; }, function (error) { return _this.errorMessage = error; });
+        ;
     };
     SidebarComponent.prototype.ngOnInit = function () {
         this.getCatogories();
@@ -1620,7 +1622,7 @@ var SidebarComponent = (function () {
 SidebarComponent = __decorate([
     core_1.Component({
         selector: 'shared-sidebar',
-        template: __webpack_require__(26),
+        template: __webpack_require__(44),
         providers: [category_service_1.CategoryService]
     }),
     __metadata("design:paramtypes", [category_service_1.CategoryService])
@@ -1630,22 +1632,6 @@ exports.SidebarComponent = SidebarComponent;
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CATEGORIES = [
-    { id: 11, name: 'Top' },
-    { id: 12, name: 'Dress' },
-    { id: 13, name: 'Skirt' },
-    { id: 14, name: 'Pant' },
-    { id: 15, name: 'Short' },
-];
-
-
-/***/ }),
-/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1665,7 +1651,7 @@ exports.PRODUCTS = [
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1678,36 +1664,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var dummy_categories_1 = __webpack_require__(14);
-var CategoryService = (function () {
-    function CategoryService() {
-    }
-    CategoryService.prototype.getCategories = function () {
-        return Promise.resolve(dummy_categories_1.CATEGORIES);
-    };
-    return CategoryService;
-}());
-CategoryService = __decorate([
-    core_1.Injectable()
-], CategoryService);
-exports.CategoryService = CategoryService;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-var dummy_products_1 = __webpack_require__(15);
+var dummy_products_1 = __webpack_require__(14);
 var ProductService = (function () {
     function ProductService() {
     }
@@ -1723,10 +1680,10 @@ exports.ProductService = ProductService;
 
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(19)(undefined);
+exports = module.exports = __webpack_require__(17)(undefined);
 // imports
 
 
@@ -1737,7 +1694,7 @@ exports.push([module.i, "@media (max-width: 767px) {\r\n    /* On small screens,
 
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports) {
 
 /*
@@ -1819,19 +1776,19 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = {
-  XmlEntities: __webpack_require__(22),
-  Html4Entities: __webpack_require__(21),
+  XmlEntities: __webpack_require__(20),
+  Html4Entities: __webpack_require__(19),
   Html5Entities: __webpack_require__(2),
   AllHtmlEntities: __webpack_require__(2)
 };
 
 
 /***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, exports) {
 
 var HTML_ALPHA = ['apos', 'nbsp', 'iexcl', 'cent', 'pound', 'curren', 'yen', 'brvbar', 'sect', 'uml', 'copy', 'ordf', 'laquo', 'not', 'shy', 'reg', 'macr', 'deg', 'plusmn', 'sup2', 'sup3', 'acute', 'micro', 'para', 'middot', 'cedil', 'sup1', 'ordm', 'raquo', 'frac14', 'frac12', 'frac34', 'iquest', 'Agrave', 'Aacute', 'Acirc', 'Atilde', 'Auml', 'Aring', 'Aelig', 'Ccedil', 'Egrave', 'Eacute', 'Ecirc', 'Euml', 'Igrave', 'Iacute', 'Icirc', 'Iuml', 'ETH', 'Ntilde', 'Ograve', 'Oacute', 'Ocirc', 'Otilde', 'Ouml', 'times', 'Oslash', 'Ugrave', 'Uacute', 'Ucirc', 'Uuml', 'Yacute', 'THORN', 'szlig', 'agrave', 'aacute', 'acirc', 'atilde', 'auml', 'aring', 'aelig', 'ccedil', 'egrave', 'eacute', 'ecirc', 'euml', 'igrave', 'iacute', 'icirc', 'iuml', 'eth', 'ntilde', 'ograve', 'oacute', 'ocirc', 'otilde', 'ouml', 'divide', 'oslash', 'ugrave', 'uacute', 'ucirc', 'uuml', 'yacute', 'thorn', 'yuml', 'quot', 'amp', 'lt', 'gt', 'OElig', 'oelig', 'Scaron', 'scaron', 'Yuml', 'circ', 'tilde', 'ensp', 'emsp', 'thinsp', 'zwnj', 'zwj', 'lrm', 'rlm', 'ndash', 'mdash', 'lsquo', 'rsquo', 'sbquo', 'ldquo', 'rdquo', 'bdquo', 'dagger', 'Dagger', 'permil', 'lsaquo', 'rsaquo', 'euro', 'fnof', 'Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi', 'Chi', 'Psi', 'Omega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigmaf', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'thetasym', 'upsih', 'piv', 'bull', 'hellip', 'prime', 'Prime', 'oline', 'frasl', 'weierp', 'image', 'real', 'trade', 'alefsym', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'crarr', 'lArr', 'uArr', 'rArr', 'dArr', 'hArr', 'forall', 'part', 'exist', 'empty', 'nabla', 'isin', 'notin', 'ni', 'prod', 'sum', 'minus', 'lowast', 'radic', 'prop', 'infin', 'ang', 'and', 'or', 'cap', 'cup', 'int', 'there4', 'sim', 'cong', 'asymp', 'ne', 'equiv', 'le', 'ge', 'sub', 'sup', 'nsub', 'sube', 'supe', 'oplus', 'otimes', 'perp', 'sdot', 'lceil', 'rceil', 'lfloor', 'rfloor', 'lang', 'rang', 'loz', 'spades', 'clubs', 'hearts', 'diams'];
@@ -1984,7 +1941,7 @@ module.exports = Html4Entities;
 
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports) {
 
 var ALPHA_INDEX = {
@@ -2145,31 +2102,25 @@ module.exports = XmlEntities;
 
 
 /***/ }),
-/* 23 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = "<shared-header></shared-header>\r\n\r\n<div class='container'>\r\n    <shared-sidebar></shared-sidebar>\r\n    <router-outlet></router-outlet>\r\n</div>\r\n";
 
 /***/ }),
-/* 24 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"col-md-9\">\r\n\r\n    <div class=\"row carousel-holder\">\r\n\r\n        <div class=\"col-md-12\">\r\n            <div id=\"carousel-example-generic\" class=\"carousel slide\" data-ride=\"carousel\">\r\n                <ol class=\"carousel-indicators\">\r\n                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"0\" class=\"active\"></li>\r\n                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"1\"></li>\r\n                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"2\"></li>\r\n                </ol>\r\n                <div class=\"carousel-inner\">\r\n                    <div class=\"item active\">\r\n                        <img class=\"slide-image\" src=\"http://placehold.it/800x300\" alt=\"\">\r\n                    </div>\r\n                    <div class=\"item\">\r\n                        <img class=\"slide-image\" src=\"http://placehold.it/800x300\" alt=\"\">\r\n                    </div>\r\n                    <div class=\"item\">\r\n                        <img class=\"slide-image\" src=\"http://placehold.it/800x300\" alt=\"\">\r\n                    </div>\r\n                </div>\r\n                <a class=\"left carousel-control\" href=\"#carousel-example-generic\" data-slide=\"prev\">\r\n                    <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n                </a>\r\n                <a class=\"right carousel-control\" href=\"#carousel-example-generic\" data-slide=\"next\">\r\n                    <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n                </a>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\" *ngFor=\"let product of products\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">{{product.price}}</h4>\r\n                    <h4>\r\n                        <a href=\"#\">{{product.name}}</a>\r\n                    </h4>\r\n                    <p>{{product.description}}</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">15 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <!--\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">$64.99</h4>\r\n                    <h4>\r\n                        <a href=\"#\">Second Product</a>\r\n                    </h4>\r\n                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">12 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">$74.99</h4>\r\n                    <h4>\r\n                        <a href=\"#\">Third Product</a>\r\n                    </h4>\r\n                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">31 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">$84.99</h4>\r\n                    <h4>\r\n                        <a href=\"#\">Fourth Product</a>\r\n                    </h4>\r\n                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">6 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">$94.99</h4>\r\n                    <h4>\r\n                        <a href=\"#\">Fifth Product</a>\r\n                    </h4>\r\n                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">18 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">$94.99</h4>\r\n                    <h4>\r\n                        <a href=\"#\">Fifth Product</a>\r\n                    </h4>\r\n                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">18 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-4 col-lg-4 col-md-4\">\r\n            <div class=\"thumbnail\">\r\n                <img src=\"http://placehold.it/320x150\" alt=\"\">\r\n                <div class=\"caption\">\r\n                    <h4 class=\"pull-right\">$94.99</h4>\r\n                    <h4>\r\n                        <a href=\"#\">Fifth Product</a>\r\n                    </h4>\r\n                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n                </div>\r\n                <div class=\"ratings\">\r\n                    <p class=\"pull-right\">18 reviews</p>\r\n                    <p>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star\"></span>\r\n                        <span class=\"glyphicon glyphicon-star-empty\"></span>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        -->\r\n    </div>\r\n\r\n</div>";
 
 /***/ }),
-/* 25 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n    <div class=\"container\">\r\n\r\n        <div class=\"navbar-header\">\r\n            <a class=\"navbar-brand\" href=\"#\">\r\n                <svg width=\"20\" height=\"20\">\r\n                    <image href=\"./Assets/ak.jpg\" src=\"ak.jpg\" width=\" 20\" height=\"20\" />\r\n                </svg>\r\n            </a>\r\n        </div>\r\n\r\n        <p class=\" navbar-text navbar-right \">welcome a.k.</p>\r\n    </div>\r\n</nav>\r\n   ";
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-3\">\r\n    <p class=\"lead\">Shop Name</p>\r\n    <div class=\"list-group\">\r\n        <ul class=\"list-group\">\r\n            <li *ngFor=\"let category of categories\" class=\"list-group-item\">\r\n                <a href=\"#\"> {{category.name}}</a>\r\n            </li>\r\n        </ul>\r\n\r\n    </div>\r\n</div>\r\n      ";
-
-/***/ }),
-/* 27 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2260,7 +2211,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 28 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2352,18 +2303,18 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 29 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(27);
-exports.encode = exports.stringify = __webpack_require__(28);
+exports.decode = exports.parse = __webpack_require__(24);
+exports.encode = exports.stringify = __webpack_require__(25);
 
 
 /***/ }),
-/* 30 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global) {/*! *****************************************************************************
@@ -3491,10 +3442,10 @@ var Reflect;
             Function("return this;")());
 })(Reflect || (Reflect = {}));
 //# sourceMappingURL=Reflect.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36), __webpack_require__(43)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33), __webpack_require__(40)))
 
 /***/ }),
-/* 31 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3507,11 +3458,11 @@ module.exports = function (str) {
 
 
 /***/ }),
-/* 32 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(18);
+        var result = __webpack_require__(16);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -3521,7 +3472,7 @@ module.exports = function (str) {
     
 
 /***/ }),
-/* 33 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*eslint-env browser*/
@@ -3565,7 +3516,7 @@ var colors = {
 };
 ansiHTML.setColors(colors);
 
-var Entities = __webpack_require__(20).AllHtmlEntities;
+var Entities = __webpack_require__(18).AllHtmlEntities;
 var entities = new Entities();
 
 exports.showProblems =
@@ -3606,7 +3557,7 @@ function problemType (type) {
 
 
 /***/ }),
-/* 34 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -3744,7 +3695,7 @@ module.exports = function(hash, moduleMap, options) {
 
 
 /***/ }),
-/* 35 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -3772,61 +3723,168 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 36 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(12);
 
 /***/ }),
-/* 37 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(37);
 
 /***/ }),
-/* 38 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(38);
 
 /***/ }),
-/* 39 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(39);
 
 /***/ }),
-/* 40 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(40);
 
 /***/ }),
-/* 41 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(46);
 
 /***/ }),
-/* 42 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(5);
 
 /***/ }),
-/* 43 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(0))(7);
 
 /***/ }),
-/* 44 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(5);
 __webpack_require__(4);
 module.exports = __webpack_require__(3);
 
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(0))(0);
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(1);
+var http_1 = __webpack_require__(35);
+var Observable_1 = __webpack_require__(42);
+__webpack_require__(45);
+__webpack_require__(46);
+var CategoryService = (function () {
+    //private categoryUrl = 'http://localhost:53423/api/category/categories';  // URL to web api
+    function CategoryService(http) {
+        this.http = http;
+        this.categoryUrl = 'http://snowshopapi.azurewebsites.net/api/Category/Categories'; // URL to web api
+    }
+    CategoryService.prototype.getCategories = function () {
+        return this.http.get(this.categoryUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    CategoryService.prototype.extractData = function (res) {
+        var body = res.json()['model'];
+        //console.log('test json 3' + res.json()['model'] );
+        return res.json()['model'];
+    };
+    CategoryService.prototype.handleError = function (error) {
+        // In a real world app, you might use a remote logging infrastructure
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable_1.Observable.throw(errMsg);
+    };
+    return CategoryService;
+}());
+CategoryService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], CategoryService);
+exports.CategoryService = CategoryService;
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-3\">\r\n    <p class=\"lead\">Shop Name</p>\r\n    <div class=\"list-group\">\r\n        <ul class=\"list-group\">\r\n            <li *ngFor=\"let category of categories\" class=\"list-group-item\">\r\n                <a href=\"#\"> {{category.name}}</a>\r\n            </li>\r\n        </ul>\r\n\r\n    </div>\r\n</div>\r\n      ";
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__(42);
+var catch_1 = __webpack_require__(48);
+Observable_1.Observable.prototype.catch = catch_1._catch;
+Observable_1.Observable.prototype._catch = catch_1._catch;
+//# sourceMappingURL=catch.js.map
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__(42);
+var map_1 = __webpack_require__(47);
+Observable_1.Observable.prototype.map = map_1.map;
+//# sourceMappingURL=map.js.map
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(0))(27);
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(0))(72);
 
 /***/ })
 /******/ ]);
