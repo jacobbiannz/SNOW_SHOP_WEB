@@ -12,11 +12,14 @@ export class HomeComponent implements OnInit {
     //title = 'Tour of Heroes';
     products: Product[];
     selectedProduct: Product;
+    errorMessage: string;
 
     constructor(private productService: ProductService) { }
 
     getProducts(): void {
-        this.productService.getProducts().then(products => this.products = products);
+        this.productService.getProducts().subscribe(
+            Categories => this.products = Categories,
+            error => this.errorMessage = <any>error);
     }
     ngOnInit(): void {
         this.getProducts();

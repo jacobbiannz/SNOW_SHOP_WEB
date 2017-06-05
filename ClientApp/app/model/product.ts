@@ -2,6 +2,6 @@
     id: number;
     name: string;
     description: string;
-    price: number;
+    marketPrice: number;
     category: string;
 }
