@@ -5,6 +5,8 @@ import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { FootComponent } from './components/shared/footer/footer.component';
+
 
 export const sharedConfig: NgModule = {
     bootstrap: [ AppComponent ],
@@ -12,7 +14,8 @@ export const sharedConfig: NgModule = {
         AppComponent,
         HomeComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
+        FootComponent
     ],
     imports: [
         RouterModule.forRoot([
