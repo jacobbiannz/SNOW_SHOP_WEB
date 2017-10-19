@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
             error => this.errorMessage = <any>error);
     }
     ngOnInit(): void {
+        
         this.getProducts();
     }
     onSelect(product: Product): void {

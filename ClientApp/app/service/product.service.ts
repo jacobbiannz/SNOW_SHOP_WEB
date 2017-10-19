@@ -10,9 +10,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ProductService {
 
-    private ProductUrl = 'http://snowshopapi.azurewebsites.net/api/Product/Products';  // URL to web api
+    //private ProductUrl = 'http://snowshopapi.azurewebsites.net/api/Product/Products';  // URL to web api
 
-    //private ProductUrl = 'http://localhost:53423/api/Product/Products';  // URL to web api
+    private ProductUrl = 'http://localhost:5001/api/Product/Products';  // URL to web api
 
     constructor(private http: Http) { }
 
@@ -24,7 +24,7 @@ export class ProductService {
     private extractData(res: Response) {
         let body = res.json()['model'];
 
-        //console.log('test json 3' + res.json()['model'] );
+        console.log('test json 7 ' + (res.json()['model'] as Product[]) );
 
         return res.json()['model'] as Product[];
     }

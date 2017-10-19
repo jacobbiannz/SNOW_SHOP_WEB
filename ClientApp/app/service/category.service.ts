@@ -9,13 +9,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CategoryService {
 
-    private categoryUrl = 'http://snowshopapi.azurewebsites.net/api/Category/Categories';  // URL to web api
+    //private categoryUrl = 'http://snowshopapi.azurewebsites.net/api/Category/Categories';  // URL to web api
     
-    //private categoryUrl = 'http://localhost:53423/api/category/categories';  // URL to web api
+    private categoryUrl = 'http://localhost:5001/api/category/categories';  // URL to web api
 
     constructor(private http: Http) { }
 
     getCategories(): Observable<Category[]> {
+        //console.log('test json 3' + this.categoryUrl);
         return this.http.get(this.categoryUrl)
             .map(this.extractData)
             .catch(this.handleError);
@@ -23,7 +24,7 @@ export class CategoryService {
     private extractData(res: Response) {
         let body = res.json()['model'];
 
-        //console.log('test json 3' + res.json()['model'] );
+        //console.log('test json 4' + res.json()['model'] );
 
         return res.json()['model'] as Category[];
     }
